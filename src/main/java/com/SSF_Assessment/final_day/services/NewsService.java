@@ -86,7 +86,8 @@ public class NewsService {
         return Optional.of(News.create(result));
     }
 
-    public List<News> saveArticles(String news) {
+    public List<News> saveArticles() {
+        
 
         return null;
     }

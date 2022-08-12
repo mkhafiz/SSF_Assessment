@@ -10,8 +10,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
-import com.SSF_Assessment.final_day.models.News;
-
 @Repository
 public class NewsRepository {
 
