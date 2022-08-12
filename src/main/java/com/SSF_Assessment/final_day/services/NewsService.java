@@ -92,12 +92,13 @@ public class NewsService {
         JsonArray result = newsResult.getJsonArray("index");
         List<News> list = new LinkedList<>();
 
-        // might remove this <----
+        // -----> might remove this <----
         for (int i = 0; i < result.size(); i++) {
             // news[0]
             JsonObject jo = result.getJsonObject(i);
             list.add(News.create(jo));
         }
+        
         return list;
     }
 }

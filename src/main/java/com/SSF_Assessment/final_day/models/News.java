@@ -5,7 +5,7 @@ import jakarta.json.JsonObject;
 public class News {
 
     private String id; // long
-    private String published_on; // long
+    private Integer published_on; // long
     private String title;
     private String url;
     private String imageurl;
@@ -21,11 +21,11 @@ public class News {
         this.id = id;
     }
 
-    public String getPublished_on() {
+    public Integer getPublished_on() {
         return published_on;
     }
 
-    public void setPublished_on(String published_on) {
+    public void setPublished_on(Integer published_on) {
         this.published_on = published_on;
     }
 
@@ -80,7 +80,7 @@ public class News {
     public static News create(JsonObject jo) {
         News w = new News();
         w.setId(jo.getString("id"));
-        w.setPublished_on(jo.getString("published_on"));
+        w.setPublished_on(jo.getInt("published_on"));
         w.setTitle(jo.getString("title"));
         w.setUrl(jo.getString("url"));
         w.setImageurl(jo.getString("imageurl"));
