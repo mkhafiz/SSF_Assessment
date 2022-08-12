@@ -7,12 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.SSF_Assessment.final_day.models.News;
 import com.SSF_Assessment.final_day.services.NewsService;
 
 @Controller
+@RequestMapping("/home")
 public class NewsController {
 
     @Autowired
@@ -28,6 +30,9 @@ public class NewsController {
     }
 
     // @PostMapping
-    
+    // @RequestMapping(path = { "/savedNews" })
+    // public String savedNews() { //add requestparam or pathvalue
+    //     return null;
+    // }
 
 }

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,9 +27,6 @@ import jakarta.json.JsonReader;
 public class NewsService {
 
     private static final String URL = "https://min-api.cryptocompare.com/data/v2/news/";
-
-    // @Value("${API_KEY}")
-    // private String key;
 
     @Autowired
     private NewsRepository newsRepo;
@@ -53,19 +49,11 @@ public class NewsService {
 
                 // Create the GET request, GET url
                 RequestEntity<Void> req = RequestEntity.get(URL).build();
-
-                // Make the call to OpenWeatherMap
+                // Make the call to Server
                 RestTemplate template = new RestTemplate();
                 ResponseEntity<String> resp;
-
                 // Throws an exception if status code not in between 200 - 399
                 resp = template.exchange(req, String.class);
-
-                // Optional - Check status code
-                if (resp.getStatusCodeValue() != 200) {
-                    System.err.println("Error status code not 200");
-                    return Collections.emptyList();
-                }
 
                 // Get the payload and do something with it
                 payload = resp.getBody();
@@ -93,12 +81,26 @@ public class NewsService {
         List<News> list = new LinkedList<>();
 
         // -----> might remove this <----
-        for (int i = 0; i < result.size(); i++) {
-            // news[0]
-            JsonObject jo = result.getJsonObject(i);
-            list.add(News.create(jo));
-        }
-        
+        // for (int i = 0; i < result.size(); i++) {
+        // // news[0]
+        // JsonObject jo = result.getJsonObject(i);
+        // list.add(News.create(jo));
+        // }
+
         return list;
+    }
+
+    public Optional<News> getSavedArticles(String id) {
+        String result = newsRepo.getArticle(id);
+        if (null == result)
+            return Optional.empty();
+
+        return Optional.of(News.create(result));
+    }
+
+    // fixed - need to work on it -> POST Map
+    public List<News> saveArticles(String news) {
+
+        return null;
     }
 }
