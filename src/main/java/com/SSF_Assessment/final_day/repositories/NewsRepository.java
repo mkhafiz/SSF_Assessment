@@ -22,20 +22,18 @@ public class NewsRepository {
     @Qualifier("redislab")
     private RedisTemplate<String, String> redisTemplate;
 
-    // String news atau News news
-    public void save(String news, String payload) {
+    public void save(String id, String payload) {
         ValueOperations<String, String> valueOp = redisTemplate.opsForValue();
-        valueOp.set(news, payload, Duration.ofSeconds(cacheTime));
+        valueOp.set(id, payload, Duration.ofSeconds(cacheTime));
     }
 
-    // sama ngn bawah
     public Optional<String> get(String news) {
         ValueOperations<String, String> valueOp = redisTemplate.opsForValue();
         String value = valueOp.get(news);
 
         if (null == value)
-            return Optional.empty(); // empty box
-        return Optional.of(value); // box with data
+            return Optional.empty(); 
+        return Optional.of(value); 
     }
 
     public String getArticle(String id) {

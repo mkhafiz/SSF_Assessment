@@ -10,27 +10,29 @@
 
 <body>
     <h1>Crypto News of the Day</h1>
-    <!-- <form th:action="@{specify url}" th:object="${articles}" method="POST"> -- (URL + POST missing) --> 
-    <!-- <input type="submit" value="Save">
-    </form> -->
+    <form th:action="@{specify url}" th:object="${articles}" method="POST">
+        <input type="submit" value="Save">
+    </form>
     <div>
         <table border="1">
             <tr data-th-each="w: ${articles}">
                 <td th:utext="${articles.id}"></td>
                 <td th:utext="${articles.published_on}"></td>
                 <td th:utext="${articles.title}"></td>
-                <!-- <td th:utext="${articles.url}"></td> need hyperlink --> 
+                <td> <a th:href="${articles.url}">Link</a> </td>
                 <td th:utext="${articles.imageurl}"></td>
                 <td th:utext="${articles.body}"></td>
                 <td th:utext="${articles.tags}"></td>
                 <td th:utext="${articles.categories}"></td>
-                <!-- <form action="/action_page.php"> -->
-                <!-- <input type="checkbox" id="save" name="save" value="save">
-                <label for="save"> Save </label><br> -->
-                </form> 
+
+                <form action="/action_page.php"> 
+                    <input type="checkbox" id="save" name="save" value="save">
+                    <label for="save"> Save </label><br>
+                </form>
             </tr>
         </table>
     </div>
 
 </body>
+
 </html>

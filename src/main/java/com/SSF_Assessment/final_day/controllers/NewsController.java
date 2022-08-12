@@ -29,10 +29,10 @@ public class NewsController {
         return "index";
     }
 
-    // @PostMapping
-    // @RequestMapping(path = { "/savedNews" })
-    // public String savedNews() { //add requestparam or pathvalue
-    //     return null;
-    // }
+    @PostMapping
+    @RequestMapping(path = { "/savedNews" })
+    public String savedNews() { 
+        return null;
+    }
 
 }

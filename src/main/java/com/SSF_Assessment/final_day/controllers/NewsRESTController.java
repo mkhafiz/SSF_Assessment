@@ -35,8 +35,8 @@ public class NewsRESTController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(err.toString());
         }
-        News news = opt.get();
-        return ResponseEntity.ok(news.toJson().toString());
+        News w = opt.get();
+        return ResponseEntity.ok(w.toJson().toString());
 
     }
 }

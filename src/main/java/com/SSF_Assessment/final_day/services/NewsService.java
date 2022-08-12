@@ -31,7 +31,7 @@ public class NewsService {
     @Autowired
     private NewsRepository newsRepo;
 
-    public List<News> getArticles(String news) { // pakai Integer news
+    public List<News> getArticles(String news) { 
 
         Optional<String> opt = newsRepo.get(news);
         String payload;
@@ -41,11 +41,6 @@ public class NewsService {
             System.out.println("Getting news from Server");
 
             try {
-                // // Create the url with query string
-                // String url = UriComponentsBuilder.fromUriString(URL)
-                // .queryParam("q", URLEncoder.encode(city, "UTF-8"))
-                // .queryParam("appid", key)
-                // .toUriString();
 
                 // Create the GET request, GET url
                 RequestEntity<Void> req = RequestEntity.get(URL).build();
@@ -80,13 +75,6 @@ public class NewsService {
         JsonArray result = newsResult.getJsonArray("index");
         List<News> list = new LinkedList<>();
 
-        // -----> might remove this <----
-        // for (int i = 0; i < result.size(); i++) {
-        // // news[0]
-        // JsonObject jo = result.getJsonObject(i);
-        // list.add(News.create(jo));
-        // }
-
         return list;
     }
 
@@ -98,7 +86,6 @@ public class NewsService {
         return Optional.of(News.create(result));
     }
 
-    // fixed - need to work on it -> POST Map
     public List<News> saveArticles(String news) {
 
         return null;
